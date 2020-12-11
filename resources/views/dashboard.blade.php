@@ -10,6 +10,9 @@
         <div class="container pt-3">
             {{-- <h1 class="text-3xl text-green-500">Tableau de bord</h1> --}}
             <div class="flex flex-col md:flex-row">
+
+
+
             <section class="text-gray-700 w-full w-1/3 mr-5">
             <h2 class="text-xl my-2"><svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -25,6 +28,7 @@
               </div>
               @endforeach
             </section>
+
           
             <section class="text-sm text-gray-700 w-full w-1/3 mr-5">
             <h2 class="text-xl my-2"><svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,6 +43,11 @@
               @endforeach
             </section>
           
+
+            {{-- @if (auth()->user()->role_id==2) --}}
+                  
+              
+            
           
             <section class="text-sm text-gray-700 w-full">
               <h2 class="text-xl my-2">
@@ -58,16 +67,20 @@
                 {{ $proposal->user->name }}
                 </strong>
                 </li>
-                {{-- @if ($proposal->validated)
+                @if ($proposal->validated)
                 <span class="bg-white border border-green-500 text-xs p-1 my-2 inline-block text-green-500 rounded">Déjà validé</span>
                 @else
                 <a href="{{ route('confirm.proposal', [$proposal->id])}}" class="bg-green-500 text-xs py-2 px-2 mt-2 mb-3 inline-block text-white hover:bg-green-200 hover:text-green-500 duration-200 transition rounded">Valider la proposition</a>
-                @endif --}}
+                @endif
                 @endforeach
                 </ul>
               </div>
               @endforeach
             </section>
+
+            {{-- @else
+
+            @endif --}}
             </div>
 
         </div>
