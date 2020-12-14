@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use Livewire\Component;
+use MercurySeries\Flashy\Flashy;
 
 class JobController extends Controller
 {
@@ -27,6 +28,7 @@ class JobController extends Controller
     {
         return view('jobs.show', [
             'jobs'=>$id
+            
         ]);
     }
 }

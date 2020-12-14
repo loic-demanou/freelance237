@@ -11,7 +11,8 @@
         <p class="text-md text-gray-800">{{ $job->description }}</p>
         <div class="flex items-center">
             <span class="h-2 w-2 bg-green-400 rounded-full mr-1"></span>
-            <a style="font-weight:bold" href="{{ route('jobs.show', $job->id) }}">Show the mission</a>
+            {{-- <a style="font-weight:bold" href="{{ route('jobs.show', $job->id) }}">Show the mission</a> --}}
+            <a  href="{{ route('jobs.show', $job->id) }}" class="bg-green-500 text-xm py-2 px-2 mt-2 mb-3 inline-block text-white hover:bg-green-300 hover:text-green-500 duration-200 transition rounded">Show the mission</a>
         </div>
         <span class="text-sm text-gray-600">{{ number_format( $job->price, 2, ",", " " ) }} Fcfa</span>
         
