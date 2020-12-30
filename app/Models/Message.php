@@ -9,5 +9,15 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $fillable= ['iser_id', 'conversation_id', 'content'];
+    protected $fillable= ['user_id', 'conversation_id', 'content'];
+
+    public function user()
+    {
+        return $this->belongsTo("App\Models\User");
+    }
+
+    public function conversation()
+    {
+        return $this->belongsTo("App\Models\Conversation");
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConversationController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
@@ -35,12 +36,19 @@ Route::get('/', function () {
 
 
 Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
+
 Route::get('jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
 
 
 Route::group(['middleware'=> ['auth']], function(){
-    Route::get('/confirmProposal/{proposal}', [ProposalController::class, 'confirm'])->name('confirm.proposal');
+
     Route::get('/dashboard', [JobController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/confirmProposal/{proposal}', [ProposalController::class, 'confirm'])->name('confirm.proposal');
+
+    Route::get('/conversations', [ConversationController::class, 'index'])->name('conversation.index');
+
+    Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversation.show');
 
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Conversation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -73,6 +74,19 @@ class User extends Authenticatable
     public function proposals()
     {
         return $this->hasMany('App\Models\Proposal');
+    }
+
+    public function conversations()
+    {
+        return Conversation::where(function($q) {
+            return $q->where('to', $this->id)
+            ->orWhere('from', $this->id);
+        });
+    }
+
+    public function getConversationsAttribute()
+    {
+        return $this->conversations()->get();
     }
 
     public function likes()

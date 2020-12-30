@@ -49,10 +49,11 @@ class ProposalController extends Controller
 
             Message::create([
                 'user_id' => auth()->user()->id,
-                'conversation' => $conversation->id,
-                'content' => "Yo, jai validé"
+                'conversation_id' => $conversation->id,
+                'content' => "Salut, jai validé votre offre !"
             ]);
             return redirect()->route('jobs.index');
+            Flashy::message('Validated proposal !');
         }
 
 
