@@ -7,6 +7,11 @@
     </x-slot>
     <div class="container mt-3">
 
+        <div class="container">
+            <p  class="font-semibold mb-3">Cliquer sur un message pour commencer la discussion</p>
+        </div>
+
+
         @foreach($conversations as $conversation)
         <a href="{{ route('conversation.show', $conversation->id) }}" class="focus:outline-none">
           <div class="flex items-center justify-between px-3 py-10 mb-3 shadow-md rounded mb-3 border-2
