@@ -11,7 +11,7 @@
                 <p class="text-md text-gray-800">{{ $jobs->description }}</p>
                 <div class="flex items-center">
                     <span class="h-2 w-2 bg-green-400 rounded-full mr-1"></span>
-                    <a href='#'>Show a mission </a>
+                    {{-- <a href='#'>Show a mission </a> --}}
                 </div>
                 
                 <span class="text-sm text-gray-600">{{ number_format( $jobs->price, 2, ",", " " ) }} Fcfa</span>

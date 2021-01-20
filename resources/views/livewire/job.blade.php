@@ -1,5 +1,5 @@
-<div>
-    <div class="px-3 py-5 mb-3 hover:shadow-lg rounded border border-gray-500 bg-gray-200">
+<div class="col-4">
+    <div class="px-3 py-5 mb-5 hover:shadow-lg rounded border border-gray-500 bg-gray-200">
         <div class="flex justify-between">
             <h2 class="text-xl font-bold text-green-600">{{ $job->title }}</h2>
             <button class="h-6 w-6 text-gray-600 focus:outline-none" wire:click="addLike">
@@ -10,7 +10,7 @@
         </div>
         <p class="text-md text-gray-800">{{ $job->description }}</p>
         <div class="flex items-center">
-            <span class="h-2 w-2 bg-green-400 rounded-full mr-1"></span>
+            <span class="h-2 w-2 bg-green-400 rounded-full mr-3"></span>
             {{-- <a style="font-weight:bold" href="{{ route('jobs.show', $job->id) }}">Show the mission</a> --}}
             <a  href="{{ route('jobs.show', $job->id) }}" class="bg-green-500 text-xm py-2 px-2 mt-2 mb-3 inline-block text-white hover:bg-green-300 hover:text-green-500 duration-200 transition rounded">Show the mission</a>
         </div>
@@ -18,3 +18,13 @@
         
     </div>
 </div>
+
+{{-- <div class="card px-3 py-5 mb-3 hover:shadow-lg rounded border border-gray-500 bg-gray-200" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-xl font-bold text-green-600">{{ $job->title }}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <button class="btn btn-primary focus:outline-none" wire:click="addLike">Go somewhere 
+        
+      </button>
+    </div>
+  </div> --}}

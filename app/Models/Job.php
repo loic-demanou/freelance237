@@ -9,6 +9,7 @@ class Job extends Model
 {
 
     use HasFactory;
+    protected $fillable=['title', 'description', 'price', 'status', 'user_id'];
 
     // public function scopeSearch($field, $string)
     // {

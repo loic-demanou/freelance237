@@ -52,8 +52,10 @@ class ProposalController extends Controller
                 'conversation_id' => $conversation->id,
                 'content' => "Salut, jai validé votre offre !"
             ]);
-            return redirect()->route('jobs.index');
+            
             Flashy::message('Validated proposal !');
+
+            return redirect()->route('jobs.index');
         }
 
 

@@ -50,6 +50,11 @@ Route::group(['middleware'=> ['auth']], function(){
 
     Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversation.show');
 
+    Route::get('/createJob', [JobController::class, 'create'])->name('jobs.create');
+    Route::post('/createJob/{id}', [JobController::class, 'store'])->name('jobs.store');
+
+
+
 });
 
 Route::group(['middleware'=> ['auth', 'proposal']], function(){
