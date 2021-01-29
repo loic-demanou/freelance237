@@ -1,4 +1,4 @@
-<div class="col-4">
+<div class="col-md-4 col-sm-12 col-lg-4">
     <div class="px-3 py-5 mb-5 hover:shadow-lg rounded border border-gray-500 bg-gray-200">
         <div class="flex justify-between">
             <h2 class="text-xl font-bold text-green-600">{{ $job->title }}</h2>
@@ -8,11 +8,19 @@
                 </svg>
             </button>
         </div>
-        <p class="text-md text-gray-800">{{ $job->description }}</p>
+        {{-- if (strlen($comment)>50) $comment=substr($comment, 0, 50) --}}
+            <p class="text-md text-gray-800" style="">{{ substr($job->description, 0, 40) }}...</p>
+
         <div class="flex items-center">
-            <span class="h-2 w-2 bg-green-400 rounded-full mr-3"></span>
+            @if ($job->status==1)
+                <span class="h-3 w-3 bg-green-400 rounded-full mr-3"></span><p class="mr-4">Available</p>
+            @else
+                <span class="h-3 w-3 bg-red-400 rounded-full mr-3"></span><p class="mr-4">Unavailable </p>
+            @endif
             {{-- <a style="font-weight:bold" href="{{ route('jobs.show', $job->id) }}">Show the mission</a> --}}
-            <a  href="{{ route('jobs.show', $job->id) }}" class="bg-green-500 text-xm py-2 px-2 mt-2 mb-3 inline-block text-white hover:bg-green-300 hover:text-green-500 duration-200 transition rounded">Show the mission</a>
+            <a  href="{{ route('jobs.show', $job->id) }}" class="bg-green-500 text-xm py-2 px-3 mt-2 mb-3 
+                inline-block text-white hover:bg-green-300 hover:text-green-500 duration-200 transition 
+                rounded float-right"><i class="far fa-eye mr-3" style="color:black"></i>Show this mission</a>
         </div>
         <span class="text-sm text-gray-600">{{ number_format( $job->price, 2, ",", " " ) }} Fcfa</span>
         

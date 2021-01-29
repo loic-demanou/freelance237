@@ -53,6 +53,9 @@ Route::group(['middleware'=> ['auth']], function(){
     Route::get('/createJob', [JobController::class, 'create'])->name('jobs.create');
     Route::post('/createJob/{id}', [JobController::class, 'store'])->name('jobs.store');
 
+    Route::get('/createJob/{id}', [JobController::class, 'delete'])->name('jobs.delete');
+
+
 
 
 });

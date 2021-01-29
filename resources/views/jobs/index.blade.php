@@ -2,7 +2,8 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
             <span class="text-green-600">Available jobs</span>
-            <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">Create a new job</a>
+            <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">
+                <i class="fas fa-plus mr-2"></i>Create a new job</a>
         </h2>
     </x-slot>
     <div class="container mt-3">

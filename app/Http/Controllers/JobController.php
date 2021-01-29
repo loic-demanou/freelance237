@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use MercurySeries\Flashy\Flashy;
 
@@ -58,8 +59,27 @@ class JobController extends Controller
 
         ]);
         Flashy::message('New mission created !');
+        session()->flash('message', 'created mission');
+        session()->flash('notification.type', 'success');
+
+
 
         return redirect()->route('jobs.index');
+
+    }
+
+    public function delete($id)
+    {
+        // $job= DB::delete('delete jobs where id = ?', ['jobs->id']);
+        $job=DB::table('jobs')->where('id', $id)->delete();
+        // $prod=DB::table('products')->where('id', $id)->delete();
+        Flashy::message('Mission deleted !');
+        session()->flash('message', 'Deleted mission');
+        session()->flash('notification.type', 'danger');
+
+        return redirect()->route('dashboard');
+
+
 
     }
 }

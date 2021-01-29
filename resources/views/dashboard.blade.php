@@ -1,8 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight" style="display:flex">
             <h1 class="text-2xl text-green-500">Dashbord</h1>
-
+            <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">
+              <i class="fas fa-plus mr-2"></i>Create a new job</a>
         </h2>
     </x-slot>
 
@@ -12,6 +13,7 @@
             <div class="flex flex-col md:flex-row">
 
 
+            @if (auth()->user()->role_id==1)
 
             <section class="text-gray-700 w-full w-1/3 mr-5">
             <h2 class="text-xl my-2"><svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -28,8 +30,11 @@
               </div>
               @endforeach
             </section>
+          @endif
 
           
+                
+            
             <section class="text-sm text-gray-700 w-full w-1/3 mr-5">
             <h2 class="text-xl my-2"><svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -42,12 +47,10 @@
               </div>
               @endforeach
             </section>
-          
 
-            {{-- @if (auth()->user()->role_id==2) --}}
+             @if (auth()->user()->role_id==2) 
                   
               
-            
           
             <section class="text-sm text-gray-700 w-full">
               <h2 class="text-xl my-2">
@@ -58,7 +61,9 @@
               @foreach(auth()->user()->jobs as $job)
               <div class="mb-3">
                 <span class="block font-semibold">
-                  {{ $job->title }} ({{ $job->proposals->count() }} @choice('proposition|propositions', $job->proposals)) :</span>
+                 <a href="" class="btn" style="color: green"><i class="far fa-edit"></i></a> | | 
+                 <a href="{{ route('jobs.delete', $job->id) }}" class="btn" style="color: red" onclick= "return confirm('Are ou sure?');" >
+                  <i class="fas fa-trash-alt"></i></a> {{ $job->title }} ({{ $job->proposals->count() }} @choice('proposition|propositions', $job->proposals)) :</span>
                 </span>
                 <ul class="list-none ml-4">
                 @foreach($job->proposals as $proposal)
@@ -78,9 +83,9 @@
               @endforeach
             </section>
 
-            {{-- @else
 
-            @endif --}}
+            @endif 
+
             </div>
 
         </div>

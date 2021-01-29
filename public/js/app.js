@@ -21241,17 +21241,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/css/app.css":
-/*!*******************************!*\
-  !*** ./resources/css/app.css ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleNotFoundError: Module not found: Error: Can't resolve './bg-1.jpg' in 'D:\\prj\\laravel\\freelance237\\resources\\css'\n    at D:\\prj\\laravel\\freelance237\\node_modules\\webpack\\lib\\Compilation.js:925:10\n    at D:\\prj\\laravel\\freelance237\\node_modules\\webpack\\lib\\NormalModuleFactory.js:401:22\n    at D:\\prj\\laravel\\freelance237\\node_modules\\webpack\\lib\\NormalModuleFactory.js:130:21\n    at D:\\prj\\laravel\\freelance237\\node_modules\\webpack\\lib\\NormalModuleFactory.js:224:22\n    at D:\\prj\\laravel\\freelance237\\node_modules\\neo-async\\async.js:2830:7\n    at D:\\prj\\laravel\\freelance237\\node_modules\\neo-async\\async.js:6877:13\n    at D:\\prj\\laravel\\freelance237\\node_modules\\webpack\\lib\\NormalModuleFactory.js:214:25\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\Resolver.js:213:14\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (D:\\prj\\laravel\\freelance237\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\UnsafeCachePlugin.js:44:7\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (D:\\prj\\laravel\\freelance237\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (D:\\prj\\laravel\\freelance237\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:67:43\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (D:\\prj\\laravel\\freelance237\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (D:\\prj\\laravel\\freelance237\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:67:43\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (D:\\prj\\laravel\\freelance237\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\Resolver.js:285:5\n    at eval (eval at create (D:\\prj\\laravel\\freelance237\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\DirectoryExistsPlugin.js:27:15\n    at D:\\prj\\laravel\\freelance237\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)");
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -21378,15 +21367,26 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
-  \***********************************************************/
+/*!*************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! D:\prj\laravel\freelance237\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\prj\laravel\freelance237\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! D:\prj\laravel\freelance237\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
