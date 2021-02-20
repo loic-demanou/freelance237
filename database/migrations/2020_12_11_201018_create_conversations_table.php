@@ -17,7 +17,7 @@ class CreateConversationsTable extends Migration
             $table->id();
             $table->foreignId('from')->constrained('users');
             $table->foreignId('to')->constrained('users');
-            $table->foreignId('job_id')->constrained();
+            $table->foreignId('job_id')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -9,13 +9,13 @@
             </button>
         </div>
         {{-- if (strlen($comment)>50) $comment=substr($comment, 0, 50) --}}
-            <p class="text-md text-gray-800" style="">{{ substr($job->description, 0, 40) }}...</p>
+            <p class="text-md text-gray-800" style="">{{ substr($job->description, 0, 40) .'...'}}</p>
 
         <div class="flex items-center">
             @if ($job->status==1)
-                <span class="h-3 w-3 bg-green-400 rounded-full mr-3"></span><p class="mr-4">Available</p>
+                <span class="h-3 w-3 bg-green-400 rounded-full mr-3"></span><p class="mr-4 text-gray-600">Available</p>
             @else
-                <span class="h-3 w-3 bg-red-400 rounded-full mr-3"></span><p class="mr-4">Unavailable </p>
+                <span class="h-3 w-3 bg-red-400 rounded-full mr-3"></span><p class="mr-4 text-gray-600"">Unavailable </p>
             @endif
             {{-- <a style="font-weight:bold" href="{{ route('jobs.show', $job->id) }}">Show the mission</a> --}}
             <a  href="{{ route('jobs.show', $job->id) }}" class="bg-green-500 text-xm py-2 px-3 mt-2 mb-3 
@@ -23,6 +23,8 @@
                 rounded float-right"><i class="far fa-eye mr-3" style="color:black"></i>Show this mission</a>
         </div>
         <span class="text-sm text-gray-600">{{ number_format( $job->price, 2, ",", " " ) }} Fcfa</span>
+        <div class="text-sm text-gray-600 mt-2">There is {{ $job->proposals->count() }} @choice('proposal|proposals', $job->proposals) for this mission</div>
+        
         
     </div>
 </div>

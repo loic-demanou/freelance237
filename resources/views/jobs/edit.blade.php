@@ -6,14 +6,15 @@
     </x-slot>
 
     <div class="container mt-3">
-        <h2 class="text-gray-600" style="font-size:25px">Fill-in the form to create your new mission for the freelance</h2>
-        <form action="{{ route('jobs.store' ,auth()->user() )}}" method="post">
+        <h2 class="text-gray-600" style="font-size:25px">Fill-in the form to update a mission that you published</h2>
+        <form action="{{ route("jobs.update", $jobs->id) }}" method="post">
+            @method('put')
             @csrf
             <div class="row hover:shadow-lg border border-gray-500 bg-white py-4"style="margin-top:4%; border-radius: 15px;">
                 <div class="form-group col-md-6" >
                         <label for="">Title</label>
                         <input type="text" class="form-control" name="title" @error('title') is-invalid @enderror
-                            name="title" value="{{ old('title') }}" autocomplete="title" autofocus>
+                            name="title" value="{{ $jobs->title }}" autocomplete="title" autofocus>
                         @error('title')
                         <span class="text-red-400 text-sm block" role="alert">
                             <strong>{{ $message }}</strong>
@@ -23,8 +24,8 @@
 
                         <label for="">Description</label>
                         <textarea name="description" cols="30" rows="5" class="form-control" @error('description')
-                            is-invalid @enderror name="description" value="{{ old('description') }}"
-                            autocomplete="description" autofocus></textarea>
+                            is-invalid @enderror name="description" value=""
+                            autocomplete="description" autofocus>{{ $jobs->description }}</textarea>
                         @error('description')
                         <span class="text-red-400 text-sm block" role="alert">
                             <strong>{{ $message }}</strong>
@@ -40,14 +41,16 @@
                             @enderror name="attachment" value="{{ old('attachment') }}" autocomplete="attachment"
                             autofocus>
                         @error('attachment')
-                        <span class="text-red-400 text-sm block" role="alert"></span>
+                        <span class="text-red-400 text-sm block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     <br>
 
                     <div class="col-md-3">
                         <label for="">Price</label>
                         <input type="number" class="form-control" name="price" @error('price') is-invalid @enderror
-                            name="price" value="{{ old('price') }}" autocomplete="price" autofocus>
+                            name="price" value="{{ $jobs->price }}" autocomplete="price" autofocus>
                         @error('price')
                         <span class="text-red-400 text-sm block" role="alert">
                             <strong>{{ $message }}</strong>
@@ -69,10 +72,8 @@
                                 </label>
                             </div>
                             @error('status')
-                            <span class="text-red-400 text-sm block" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                                @enderror
+                            <span class="text-red-400 text-sm block">{{ $message }}</span>
+                            @enderror
                         </div>
     
                     </div>
@@ -80,7 +81,7 @@
 
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary px-5">Create</button>
+                    <button class="btn btn-primary px-5">Update</button>
                 </div>
             </div>
         </form>

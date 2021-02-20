@@ -49,13 +49,20 @@ Route::group(['middleware'=> ['auth']], function(){
     Route::get('/conversations', [ConversationController::class, 'index'])->name('conversation.index');
 
     Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversation.show');
+    
 
     Route::get('/createJob', [JobController::class, 'create'])->name('jobs.create');
+
     Route::post('/createJob/{id}', [JobController::class, 'store'])->name('jobs.store');
 
-    Route::get('/createJob/{id}', [JobController::class, 'delete'])->name('jobs.delete');
+
+    Route::get('/editJob/{id}', [JobController::class, 'edit'])->name('jobs.edit');
+
+    Route::put('/editJob/{id}', [JobController::class, 'update'])->name('jobs.update');
 
 
+
+    Route::get('/deleteJob/{id}', [JobController::class, 'delete'])->name('jobs.delete');
 
 
 });

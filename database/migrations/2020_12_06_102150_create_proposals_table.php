@@ -16,7 +16,7 @@ class CreateProposalsTable extends Migration
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('job_id')->constrained();
+            $table->foreignId('job_id')->onDelete('cascade');
             $table->boolean('validated')->default(0);
             $table->timestamps();
         });

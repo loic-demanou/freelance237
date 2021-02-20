@@ -36,6 +36,7 @@
                         <button type="submit" class="btn btn-primary" >Submit my cover letter</button>
                     @else
                     <button type="submit" class="btn btn-primary" disabled >Submit my cover letter</button>
+                    <span class="text-red-500">This mission is unavailable for the moment !</span>
                         {{-- <div class="alert alert-danger"> The mission is unavailable for the moment</div> --}}
                     @endif
 
