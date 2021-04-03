@@ -12,8 +12,8 @@
       {{-- <h1 class="text-3xl text-green-500">Tableau de bord</h1> --}}
       <div class="flex flex-col md:flex-row">
 
-
         @if (auth()->user()->role_id==1)
+
 
         <section class="text-gray-700 w-full w-1/3 mr-5">
           <h2 class="text-xl my-2"><svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24"
