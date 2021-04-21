@@ -43,6 +43,15 @@
                 </div>
             </header>
             <livewire:flash />
+
+            {{-- <div>
+                @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
+            </div> --}}
+
             @if (session()->has('message'))
                 <div class="alert alert-{{ session('notification.type') }} container">
                     {{ session()->get('message') }}

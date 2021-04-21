@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
             <span class="text-green-600">Available jobs</span>
-            @if (auth()->user()->role_id==2)
+            @if (auth()->user() && auth()->user()->role_id==2)
             <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">
                 <i class="fas fa-plus mr-2"></i>Create a new job</a>
                 
@@ -20,12 +20,11 @@
 
     </div> --}}
         <div class="row">
-                @foreach ($jobs as $job)
+            @foreach ($jobs as $job)
                 <livewire:job :job="$job" />
             @endforeach
-    
         </div>
-
+        {{ $jobs->links() }} 
     </div>
     
 

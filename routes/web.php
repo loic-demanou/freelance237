@@ -46,6 +46,13 @@ Route::group(['middleware'=> ['auth']], function(){
 
     Route::get('/confirmProposal/{proposal}', [ProposalController::class, 'confirm'])->name('confirm.proposal');
 
+
+    Route::get('/cancelProposal/{proposal}', [ProposalController::class, 'cancel'])->name('cancel.proposal');
+
+
+
+
+
     Route::get('/conversations', [ConversationController::class, 'index'])->name('conversation.index');
 
     Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversation.show');
@@ -69,6 +76,10 @@ Route::group(['middleware'=> ['auth']], function(){
 
 Route::group(['middleware'=> ['auth', 'proposal']], function(){
     Route::post('submit/{job}', [ProposalController::class, 'store'])->name('proposals.store');
+
+
+    // Route::get('/deleteProposal', [ProposalController::class, 'delete'])->name('delete.proposal');
+
 });
 
 

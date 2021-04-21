@@ -15,6 +15,7 @@
                 </h2>
             </x-slot>
             <p class="jumbotron">le test des sections avec blade</p>
+            
 
 
 
@@ -67,6 +68,7 @@
                   <p class="btn btn-primary">le test du slide</p>
                   <p class="btn btn-primary">le test du slide</p>
                   <p class="btn btn-primary">le test du slide</p>
+                  p 
 
               </div>
 

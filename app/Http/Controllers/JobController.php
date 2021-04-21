@@ -11,7 +11,6 @@ use MercurySeries\Flashy\Flashy;
 
 class JobController extends Controller
 {
-
     public function dashboard()
     {
         return view('dashboard');
@@ -24,7 +23,7 @@ class JobController extends Controller
         //$jobs=Job::online()->latest()->get();
         // $proposal=DB::table('proposals')->where('user_id')->select();
 
-        $jobs=Job::latest()->get();
+        $jobs=Job::latest()->paginate(8);
 
         // return view('jobs.index', compact('jobs'), compact('proposal'));
         return view('jobs.index', [
@@ -36,7 +35,6 @@ class JobController extends Controller
     {
         return view('jobs.show', [
             'jobs'=>$id
-            
         ]);
     }
 
@@ -63,17 +61,9 @@ class JobController extends Controller
             // 'attachment'=> $pdf,
             'price'=> request('price'),
             'user_id'=> auth()->user()->id,
-
-
         ]);
         Flashy::message('New mission created !');
-        // session()->flash('message', 'created mission');
-        // session()->flash('notification.type', 'success');
-
-
-
         return redirect()->route('jobs.index', compact('jobs'));
-
     }
 
     public function update(Request $request , $id)
@@ -96,9 +86,6 @@ class JobController extends Controller
         ]);
         flashy("Edited job");
         return redirect()->route('dashboard', compact('jobs'));
-
-        
-
     }
 
     public function edit($id)
@@ -117,8 +104,5 @@ class JobController extends Controller
         // session()->flash('notification.type', 'danger');
 
         return redirect()->route('dashboard');
-
-
-
     }
 }
