@@ -65,6 +65,31 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+
+
+        @if (auth()->user()->role_id==1)               
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="presentation" value="{{ __('presentation (brief introduction)') }}" />
+            <x-jet-input id="presentation" type="text" class="mt-1 block w-full" wire:model.defer="state.presentation" value="{{ Auth::user()->title }}" />
+            <x-jet-input-error for="presentation" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="description" value="{{ __('Description (describe yourself according to the profession)') }}" />
+            <textarea class="mt-1 form-control" col="20" row="30" wire:model.defer="state.description">
+                
+            </textarea>
+            {{-- <x-jet-input id="description" type="text" class="mt-1 block w-full" value="{{ Auth::user()->title }}" /> --}}
+
+            <x-jet-input-error for="description" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="rate" value="{{ __('Rate/hour') }}" />
+            <x-jet-input id="rate" type="number" class="mt-1 block " wire:model.defer="state.rate" value="{{ Auth::user()->description }}" />
+            <x-jet-input-error for="rate" class="mt-2" />
+        </div>
+        @endif
+
     </x-slot>
 
     <x-slot name="actions">

@@ -29,14 +29,20 @@
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('conversation.index') }}" :active="request()->routeIs('conversation.index')">
-                            {{ __('My conversations') }}
+                            {{ __('Chats') }}
+                        </x-jet-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Freelancer') }}
                         </x-jet-nav-link>
                     </div>
 
                 @endif
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{route( 'jobs.index' ) }}" :active="request()->routeIs('jobs.index')">
-                        {{ __('Ours missions') }}
+                        {{ __('Our missions') }}
                     </x-jet-nav-link>
                 </div>
 
@@ -176,13 +182,18 @@
                 </x-jet-responsive-nav-link>
 
                 <x-jet-responsive-nav-link href="{{ route('conversation.index') }}" :active="request()->routeIs('conversation.index')">
-                    {{ __('My conversations') }}
+                    {{ __('Chats') }}
                 </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Freelancer') }}
+                </x-jet-responsive-nav-link>
+
 
             @endif
 
             <x-jet-responsive-nav-link href="{{route( 'jobs.index' ) }}" :active="request()->routeIs('jobs.index')">
-                {{ __('Ours missions') }}
+                {{ __('Our missions') }}
             </x-jet-responsive-nav-link>
 
             @guest
