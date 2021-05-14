@@ -4,6 +4,9 @@ use App\Http\Controllers\ConversationController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
+
+use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\ProposalController;
 use Illuminate\Routing\RouteGroup;
 
@@ -33,6 +36,11 @@ Route::get('/', function () {
 // })->name('dashboard');
 
 
+Route::get('products', [ProductController::class, 'list'])->name('products.list');
+
+Route::get('/candidates', [UserController::class, 'list'])->name('candidates.list');
+Route::get('/search', [UserController::class, 'search'])->name('candidates.search');
+
 
 
 Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
@@ -52,6 +60,7 @@ Route::group(['middleware'=> ['auth']], function(){
 
 
 
+    Route::get('/message/{user}', [ConversationController::class, 'create'])->name('message.create');
 
     Route::get('/conversations', [ConversationController::class, 'index'])->name('conversation.index');
 

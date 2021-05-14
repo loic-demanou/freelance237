@@ -6,3 +6,28 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+
+// slide qsldjjjjjjjjjjjjjj
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+
+  // onglet du dashboard
+.tabs li{
+  display: inline;
+}
+
+.tabs a{
+  display: inline-block;
+  color: #48406D;
+  // background-color: #555;
+
+  // color: #fff;
+}
+.tabs a.active{
+  background: rgb(36, 136, 44);
+  color: rgb(255, 255, 255);
+}

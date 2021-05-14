@@ -11,7 +11,7 @@
 
             <div class="">
                 <div class="px-3 py-3 mb-5 hover:shadow-lg rounded border border-gray-500 bg-gray-200">
-                    <span class="text-sm text-gray-600 d-flex mb-4">
+                    <span class="text-sm text-gray-600 d-flex mb-2">
                         <img src="{{ asset('storage') . '/' .$jobs->user->profile_photo_path }}"
                         class="rounded-circle mr-3" style="width: 25px; height: 25px">
                         <strong class="mr-3"> {{" ". $jobs->user->name }} </strong>
@@ -73,10 +73,10 @@
         </div>
     
         <div class="col-md-4 col-sm-12 mb-4">
-            <p style="font-size: 18px" class="mb-3" id="test">About the client</p>
+            <p style="font-size: 18px" class="mb-3" id="">About the client</p>
             <div class="d-flex">
                 <img src="{{ asset('storage') . '/' .$jobs->user->profile_photo_path }}" width="60px"
-                class="rounded-circle mr-3" style="width: 100px; height:100px">
+                class="rounded-circle mr-3" style="width: 100px; height:100px" id="img">
                 <ul>
                     <li>
                         <p><strong class="ml-3 text-2xl"> {{" ". $jobs->user->name }} </strong></p><br>
@@ -91,17 +91,6 @@
     </div>
 
 
-    <script>
-
-        $(function() {
-           $('li').click(function (e) { 
-               console.log('okkkkkkkkk');       
-               
-           }); 
-        });
-
-    </script>
-    
     {{-- <div class="container mt-3">
 
             <div class="px-3 py-5 mb-3 hover:shadow-lg rounded border border-gray-500 bg-gray-200">
@@ -120,6 +109,5 @@
 
             </div>
     </div> --}}
-
 
 </x-app-layout>

@@ -22,8 +22,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'image', 'max:1024'],
-            'presentation' => ['nullable', 'string', 'max:100', 'min:5'],
-            'description' => ['nullable', 'string', 'max:255'],
+            'presentation' => ['nullable', 'string', 'max:255', 'min:5'],
+            'description' => ['nullable', 'string', 'max:1000'],
             'rate' => ['nullable', 'integer'],
         ])->validateWithBag('updateProfileInformation');
 

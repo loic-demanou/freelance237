@@ -1,8 +1,8 @@
     <div class="col-md-6 col-sm-12 col-lg-12">
         <div class="px-3 py-3 mb-5 hover:shadow-lg rounded border border-gray-500 bg-gray-200">
-            <span class="text-sm text-gray-600 d-flex mb-4">
+            <span class="text-sm text-gray-600 d-flex mb-2">
                 
-                <img src="{{ asset('storage') . '/' .$job->user->profile_photo_path }}" width="20px"
+                <img src="{{ asset('storage') . '/' .$job->user->profile_photo_path }}" style="width: 25px; height: 25px"
                 class="rounded-circle mr-3 ">
 
                 <strong class="mr-3"> {{" ". $job->user->name }} </strong>
@@ -10,7 +10,7 @@
                 
             </span>
             <div class="flex justify-between">
-                <div class="text-xl font-bold text-green-600 mb-1">{{ $job->title }}
+                <div class="text-xl font-bold text-green-600">{{ $job->title }}
                     @if ($job->status==1)
                         <span class="badge rounded-pill bg-success ml-3" style="font-size:11px">Available</span>
                     @else

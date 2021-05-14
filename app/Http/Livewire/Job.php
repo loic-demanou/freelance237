@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
+
 class Job extends Component
 {
     public $job;

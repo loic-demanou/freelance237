@@ -71,12 +71,12 @@ class User extends Authenticatable
 
     public function jobs()
     {
-        return $this->hasMany('App\Models\Job');
+        return $this->hasMany('App\Models\Job')->latest();
     }
 
     public function proposals()
     {
-        return $this->hasMany('App\Models\Proposal');
+        return $this->hasMany('App\Models\Proposal')->latest();
     }
 
     public function conversations()

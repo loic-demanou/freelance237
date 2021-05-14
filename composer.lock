@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af333e19fbd11822b73c3d59202069cf",
+    "content-hash": "4879ff01d90f70aac4aa92a8b00214ef",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5562,6 +5562,95 @@
                 "source": "https://github.com/webmozart/assert/tree/master"
             },
             "time": "2020-07-08T17:02:28+00:00"
+        },
+        {
+            "name": "yoeunes/notify",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yoeunes/notify.git",
+                "reference": "fcc998a5d71295352d859930b5bc6680e65bb3a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yoeunes/notify/zipball/fcc998a5d71295352d859930b5bc6680e65bb3a5",
+                "reference": "fcc998a5d71295352d859930b5bc6680e65bb3a5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/session": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+                "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^2.0.4 || ^3.0 || ^4.0 || ^5.0",
+                "phpunit/phpunit": "^4.8.36 || ^5.7 || ^6.0 || ^7.0 || ^8.3 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yoeunes\\Notify\\NotifyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Notify": "Yoeunes\\Notify\\Facades\\Notify"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yoeunes\\Notify\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes Khoubza",
+                    "email": "younes.khoubza@gmail.com",
+                    "homepage": "https://github.com/yoeunes/notify",
+                    "role": "Developer"
+                }
+            ],
+            "description": "toastr.js, pnotify.js flush notifications for Laravel 5, 6, 7, 8 and Lumen",
+            "homepage": "https://github.com/yoeunes/notify",
+            "keywords": [
+                "Laravel 5.6",
+                "alerts",
+                "flush",
+                "flush messages",
+                "flush notifications",
+                "laravel",
+                "laravel 5",
+                "laravel 5.7",
+                "laravel 5.8",
+                "laravel 6",
+                "laravel 7",
+                "laravel 8",
+                "laravel flush notifications",
+                "laravel notification",
+                "laravel pnotify",
+                "laravel toastr",
+                "lumen",
+                "messages",
+                "notification",
+                "php",
+                "pnotify",
+                "pnotify js",
+                "toastr",
+                "toastr js",
+                "yoeunes"
+            ],
+            "support": {
+                "issues": "https://github.com/yoeunes/notify/issues",
+                "source": "https://github.com/yoeunes/notify/tree/v1.0.7"
+            },
+            "time": "2021-02-07T22:09:04+00:00"
         }
     ],
     "packages-dev": [

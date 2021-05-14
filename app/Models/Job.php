@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Job extends Model
 {
 
     use HasFactory;
+    use Notifiable;
+
     protected $fillable=['title', 'description', 'price', 'status', 'user_id'];
 
     // public function scopeSearch($field, $string)
@@ -28,7 +31,7 @@ class Job extends Model
 
     public function proposals()
     {
-        return $this->hasMany('App\Models\Proposal');
+        return $this->hasMany('App\Models\Proposal')->latest();
     }
 
     public function likes()

@@ -8,7 +8,7 @@ use Livewire\Component;
 class Conversation extends Component
 {
     public $conversation;
-    public $message='';
+    public $message= '';
     protected $listeners= ['sent' => '$refresh'];
 
     public function mount($conversation)

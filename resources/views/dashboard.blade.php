@@ -1,19 +1,20 @@
 <x-app-layout>
   <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight" style="display:flex">
-      <h1 class="text-2xl text-green-500">Dashbord</h1>
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
+      <span class="text-green-600">Available jobs</span>
+      @if (auth()->user() && auth()->user()->role_id==2)
       <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">
-        <i class="fas fa-plus mr-2"></i>Create a new job</a>
-    </h2>
-  </x-slot>
+          <i class="fas fa-plus mr-2"></i>Create a new job</a>
+      @endif
+  </h2>
+</x-slot>
 
   <section>
     <div class="container pt-3">
       {{-- <h1 class="text-3xl text-green-500">Tableau de bord</h1> --}}
       <div class="flex flex-col md:flex-row">
 
-        @if (auth()->user()->role_id==1)
-
+        @if (Auth::check() && auth()->user()->role_id==1)
 
         <section class="text-gray-700 w-full w-1/3 mr-5">
           <h2 class="text-xl my-2"><svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24"
@@ -26,10 +27,15 @@
             </svg> Vos propositions ({{ auth()->user()->proposals->count() }})</h2>
           @foreach(auth()->user()->proposals as $proposal)
           <div class="mb-3 {{ $proposal->validated ? 'text-green-400' : '' }}">
-            <span class="block font-semibold items-center">
-              Pour la mission "{{ $proposal->job->title }}"
+            <span class="block  items-center">
+
+              Pour la mission  <span class="font-semibold">"{{ $proposal->job->title }}"</span> 
             </span>
-            <span>Lettre de motivation : <span class="font-semibold">{{ $proposal->coverLetter->content }}</span></span>
+            <span>Lettre de motivation :</span>
+            <span class="badge rounded-pill bg-success deplier ml-2" style="font-size:11px; cursor:pointer" id="deplier">
+              Voir <i class="fas fa-caret-down"></i></span>
+              <article class="show-depli mt-3" id="show-depli" style="text-align: justify"
+            >{{ $proposal->coverLetter->content }}</article>
           </div>
           @endforeach
         </section>
@@ -61,113 +67,155 @@
 
         @if (auth()->user()->role_id==2)
 
-        <div class="container-fluid">
-          <div class="row">
-            <h2 class="text-xl my-2">
+        <div class="container">
+          <ul class="tabs">
+            <li><a href="#tab1" class="btn btn-outline">
+              <h6 class=" my-2">
               <svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
-              Toutes vos missions ({{ auth()->user()->jobs()->count() }})
-            </h2>
-            <div class="col-7">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Proposals</th>
-                    <th scope="col">action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach (auth()->user()->jobs as $job)
-                    <tr>
-                      <th>{{ $job->title }}</th>
-                      <td>{{ number_format( $job->price, 2, ",", " " ) }}</td>
-                      @if ($job->status==1)
-                      <td>
-                        <span class="badge rounded-pill bg-success ml-3" style="font-size:11px">Available</span>
-                      </td>                     
-                      @else
-                      <td>
-                        <span class="badge rounded-pill bg-danger ml-3" style="font-size:11px">Unavailable</span>
-                      </td>                     
-                      @endif
+              All your missions ({{ auth()->user()->jobs()->count() }})
+            </h6></a></li>
+            <li><a href="#tab2" class="btn btn-outline">
+              <h6 class=" my-2">
+                <svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                All your proposals ({{ auth()->user()->proposals()->count() }})
+              </h6>
+            </a></li>
 
-                      <td>({{ $job->proposals->count() }}
-                        @choice('proposition|propositions', $job->proposals))
-                      </td>
+            {{-- <li><a href="#tab1"> onglet 1</a></li>
+            <li><a href="#tab2"> onglet 2</a></li> --}}
+          </ul>
+        </div>
 
-                      <td>
-                        <a href="{{ route('jobs.edit', $job->id) }}" class="btn" style="color: green"><i
-                          class="far fa-edit"></i></a> | |
 
-                          <a href="{{ route('jobs.delete', $job->id) }}" class="btn" style="color: red"
-                            onclick="return confirm('Are you sure ?');"><i class="fas fa-trash-alt"></i></a>     
-  
-                      </td>
+        <div class="container">
+          <div class="row">
+            <div id="tab1">
+
+              <h2 class="text-xl my-2">
+                <svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                All your missions ({{ auth()->user()->jobs()->count() }})
+              </h2>
+              <div class="col-12">
+                <table class="table table-striped">
+                  <thead>
+                    <tr style= "font-weight: bold; color: white" class="bg-indigo-800">
+                      <th scope="col">Title</th>
+                      <th scope="col">Published on</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Proposals</th>
+                      <th scope="col">action</th>
                     </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-
-
-            <div class="col-5">
-
-              <section class="text-sm text-gray-700 w-full">
-                <h2 class="text-xl my-2">
-                  <svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                  </svg>
-                  Vos missions ({{ auth()->user()->proposals()->count() }})
-                </h2>
-                @foreach(auth()->user()->jobs as $job)
-                {{-- <div class="mb-3">
-                  <span class="block font-semibold">
-                    <a href="{{ route('jobs.edit', $job->id) }}" class="btn" style="color: green"><i
-                        class="far fa-edit"></i></a> | |
-                    <a href="{{ route('jobs.delete', $job->id) }}" class="btn" style="color: red"
-                      onclick="return confirm('Are you sure ?');">
-                      <i class="fas fa-trash-alt"></i></a> {{ $job->title }} ({{ $job->proposals->count() }}
-                    @choice('proposition|propositions', $job->proposals)) :</span>
-                  </span> --}}
-                  <ul class="list-none ml-4">
-                    @foreach($job->proposals as $proposal)
-                    <li class="mt-2">• "{{ $proposal->coverLetter->content }}" par
-                      <strong>
-                        {{ $proposal->user->name }}
-                      </strong>
-                    </li>
-                    @if ($proposal->validated)
-                    <span class="bg-white border border-green-500 text-xs p-1 my-2 inline-block text-green-500 rounded">
-                      Déjà validé</span>
-      
-                      <a href= "{{ route('cancel.proposal', $proposal->id) }}"
-                        class="bg-red-300 border border-green-500 text-xs p-1 my-2 inline-block text-black rounded hover:bg-red-500 hover:text-white duration-500 transition">
-                      Annuler la validation</a>
-                    @else
-                    <a href="{{ route('confirm.proposal', $proposal->id)}}"
-                      class="bg-green-500 text-xs py-2 px-2 mt-2 mb-3 inline-block text-white hover:bg-green-300 hover:text-green-500 duration-200 transition rounded">Valider
-                      la proposition</a>
-                    @endif
+                  </thead>
+                  <tbody style="font-weight: 500">
+                    @foreach (auth()->user()->jobs as $job)
+                      <tr>
+                        <th>{{ $job->title }}</th>
+                        <td>{{ $job->created_at->format('Y/m/d - H:m') }}</td>
+                        <td>{{ number_format( $job->price, 2, ",", " " ) }}</td>
+                        @if ($job->status==1)
+                        <td>
+                          <span class="badge rounded-pill bg-success ml-3" style="font-size:11px">Available</span>
+                        </td>                     
+                        @else
+                        <td>
+                          <span class="badge rounded-pill bg-danger ml-3" style="font-size:11px">Unavailable</span>
+                        </td>                     
+                        @endif
+  
+                        <td>({{ $job->proposals->count() }}
+                          @choice('proposition|propositions', $job->proposals))
+                        </td>
+  
+                        <td>
+                          <a href="{{ route('jobs.edit', $job->id) }}" class="btn" style="color: green"><i
+                            class="far fa-edit"></i></a> | |
+  
+                            <a href="{{ route('jobs.delete', $job->id) }}" class="btn" style="color: red"
+                              onclick="return confirm('Are you sure ?');"><i class="fas fa-trash-alt"></i></a>     
+    
+                        </td>
+                      </tr>
                     @endforeach
-                  </ul>
-                {{-- </div> --}}
-                @endforeach
-              </section>
-      
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
+            <div id="tab2">
+
+              <div class="col-8">
+                <section class="text-sm text-gray-700 w-full">
+                  <h2 class="text-xl my-2">
+                    <svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                    </svg>
+                    Proposals ({{ auth()->user()->proposals()->count() }})
+                  </h2>
+                  @foreach(auth()->user()->jobs as $job)
+                  {{-- <div class="mb-3">
+                    <span class="block font-semibold">
+                      <a href="{{ route('jobs.edit', $job->id) }}" class="btn" style="color: green"><i
+                          class="far fa-edit"></i></a> | |
+                      <a href="{{ route('jobs.delete', $job->id) }}" class="btn" style="color: red"
+                        onclick="return confirm('Are you sure ?');">
+                        <i class="fas fa-trash-alt"></i></a> {{ $job->title }} ({{ $job->proposals->count() }}
+                      @choice('proposition|propositions', $job->proposals)) :</span>
+                    </span> --}}
+                    <ul class="list-none ml-4">
+                      @foreach($job->proposals as $proposal)
+                      <li class="mt-2">• Envoyé par <strong>{{ $proposal->user->name }}</strong> pour le job 
+                        <strong>{{ $proposal->job->title }}</strong>
+                        <span class="badge rounded-pill bg-success deplier ml-2" style="font-size:11px; cursor:pointer" id="deplier">
+                          Cover letter <i class="fas fa-caret-right"></i>
+                        </span>
+                          <article class="show-depli mt-3" id="show-depli" style="text-align: justify">
+                            "{{ $proposal->coverLetter->content }}"
+                          </article>
+                          
+                      </li>
+                      @if ($proposal->validated)
+                      <span class="bg-white border border-green-500 text-xs p-1 my-2 inline-block text-green-500 rounded" id="deplier">
+                        Déjà validé</span>
+        
+                        <a href= "{{ route('cancel.proposal', $proposal->id) }}"
+                          class="bg-red-300 border border-green-500 text-xs p-1 my-2 mb-4 inline-block text-black rounded hover:bg-red-500 hover:text-white duration-500 transition">
+                        Annuler la validation</a>
+                      @else
+                      <a href="{{ route('confirm.proposal', $proposal->id)}}"
+                        class="bg-green-500 text-xs py-2 px-2 mt-2 mb-4 inline-block text-white hover:bg-green-300 hover:text-green-500 duration-200 transition rounded">Valider
+                        la proposition</a>
+                      @endif
+                      {{-- <article class="show-depli mt-3" id="show-depli" style="text-align: justify">
+                        "{{ $proposal->coverLetter->content }}"sjdklqsjdklsqkldlqksldqlsdlk
+                      </article>
+                      <p>qlsdjhqsjkdqsjkdqsjk</p> --}}
+  
+                      @endforeach
+                    </ul>
+                  {{-- </div> --}}    
+    
+                  @endforeach
+                </section>
+        
+              </div>
 
             </div>
+    
           </div>
         </div>
 
         @endif
-
 
 
 </x-app-layout>

@@ -1,0 +1,31 @@
+.slogan{
+    z-index: 9000;
+    position: relative;
+}
+.slogan > p{
+    font-size: 60px;
+    color: #81696b;
+    font-weight: 600;
+}
+.slogan > article{
+    font-size: 20px;
+    color: #A47D80;
+}
+.image > img{
+    height: 500px;
+    position: absolute;
+    float: right;
+}
+.part1{
+    display: flex;
+    margin-bottom: 50px;
+}
+.part2{
+    text-align: center;
+    font-size: 35px;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+.how{
+    margin-bottom: 100px;
+}
