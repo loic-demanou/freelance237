@@ -178,6 +178,8 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
     ],
 
     /*
@@ -230,6 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

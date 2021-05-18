@@ -42,6 +42,13 @@
                 <x-jet-button class="ml-4">
                     {{ __('Login') }}
                 </x-jet-button>
+
+                <div class="d-flex">
+                    <x-jet-button class="ml-4">
+                        <i class="fab fa-google-plus-g" style="font-size: 20px"></i>
+                        <a href="{{ route('loginGoogle') }}" class="ml-2">Google</a>
+                    </x-jet-button>
+                </div>
             </div>
         </form>
     </x-jet-authentication-card>

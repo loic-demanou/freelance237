@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
-      <span class="text-green-600">Available jobs</span>
+      <span class="text-green-600">Dashboard</span>
       @if (auth()->user() && auth()->user()->role_id==2)
       <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">
           <i class="fas fa-plus mr-2"></i>Create a new job</a>
@@ -14,7 +14,7 @@
       {{-- <h1 class="text-3xl text-green-500">Tableau de bord</h1> --}}
       <div class="flex flex-col md:flex-row">
 
-        @if (Auth::check() && auth()->user()->role_id==1)
+        @if (auth()->user()->role_id==1)
 
         <section class="text-gray-700 w-full w-1/3 mr-5">
           <h2 class="text-xl my-2"><svg class="w-6 h-6 inline-block" fill="none" viewBox="0 0 24 24"
@@ -117,6 +117,7 @@
                     </tr>
                   </thead>
                   <tbody style="font-weight: 500">
+                    
                     @foreach (auth()->user()->jobs as $job)
                       <tr>
                         <th>{{ $job->title }}</th>
@@ -131,18 +132,14 @@
                           <span class="badge rounded-pill bg-danger ml-3" style="font-size:11px">Unavailable</span>
                         </td>                     
                         @endif
-  
                         <td>({{ $job->proposals->count() }}
                           @choice('proposition|propositions', $job->proposals))
                         </td>
-  
                         <td>
                           <a href="{{ route('jobs.edit', $job->id) }}" class="btn" style="color: green"><i
                             class="far fa-edit"></i></a> | |
-  
                             <a href="{{ route('jobs.delete', $job->id) }}" class="btn" style="color: red"
                               onclick="return confirm('Are you sure ?');"><i class="fas fa-trash-alt"></i></a>     
-    
                         </td>
                       </tr>
                     @endforeach

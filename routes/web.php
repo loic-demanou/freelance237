@@ -8,7 +8,11 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\LoginController;
+
 use Illuminate\Routing\RouteGroup;
+use Laravel\Socialite\Facades\Socialite;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +24,14 @@ use Illuminate\Routing\RouteGroup;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/login/google', [LoginController::class, 'redirectToProvider'])->name('loginGoogle');
+
+Route::get('/login/google/callback', [LoginController::class, 'handleProviderCallback']);
+
 
 
 // Route::get('home', [HomeController::class, 'delete'])->name('product.delete');
@@ -54,9 +59,7 @@ Route::group(['middleware'=> ['auth']], function(){
 
     Route::get('/confirmProposal/{proposal}', [ProposalController::class, 'confirm'])->name('confirm.proposal');
 
-
     Route::get('/cancelProposal/{proposal}', [ProposalController::class, 'cancel'])->name('cancel.proposal');
-
 
 
 
@@ -66,17 +69,15 @@ Route::group(['middleware'=> ['auth']], function(){
 
     Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversation.show');
     
+    
 
     Route::get('/createJob', [JobController::class, 'create'])->name('jobs.create');
 
     Route::post('/createJob/{id}', [JobController::class, 'store'])->name('jobs.store');
 
-
     Route::get('/editJob/{id}', [JobController::class, 'edit'])->name('jobs.edit');
 
     Route::put('/editJob/{id}', [JobController::class, 'update'])->name('jobs.update');
-
-
 
     Route::get('/deleteJob/{id}', [JobController::class, 'delete'])->name('jobs.delete');
 
@@ -86,10 +87,14 @@ Route::group(['middleware'=> ['auth']], function(){
 Route::group(['middleware'=> ['auth', 'proposal']], function(){
     Route::post('submit/{job}', [ProposalController::class, 'store'])->name('proposals.store');
 
-
     // Route::get('/deleteProposal', [ProposalController::class, 'delete'])->name('delete.proposal');
 
 });
 
 
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
