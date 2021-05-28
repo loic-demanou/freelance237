@@ -1,16 +1,21 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <p class="text-green-600">Job seekers list</p>
-        </h2>
-    </x-slot>
-
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
+            <p class="text-green-600 font-semibold text-xl">Job seekers list</p>
+        </div>
+    </header>
     <div class="container form-group my-5">
         <form action="{{ route('candidates.search') }}" class="d-flex">
             <label class="mr-5 ml-20" style="font-weight: 500">Find job seeker</label>
-            <input type="text" name="q" value="{{ request()->q ?? '' }}" class="form-control w-50 ml-5">
+            <input type="text" name="q" value="{{ request()->q ?? '' }}" class="form-control w-50 ml-5 input-search">
             <button class="btn btn-success ml-1">search</button>
         </form>
+        @if ($errors->has('q'))
+        <span class="text-red-400 text-sm block" role="alert">
+            <strong>{{ $errors->first('q') }}</strong>
+        </span>
+        @endif
+
     </div>
 
     {{-- @if ($candidates) --}}
@@ -18,13 +23,12 @@
         <div class="container">
             <div class="row mx-5 mt-3">
                 @foreach ($candidates as $candidate)
-                    <div class="col-md-2 px-3 py-3 mb-5 hover:shadow-lg border border-gray-500 bg-gray-200">
-                        <img src="{{ asset('storage') . '/' .$candidate->profile_photo_path }}"
+                    <div class="col-2 px-3 py-3 mb-5 hover:shadow-lg border border-gray-500 bg-gray-200">
+                        <img src="{{ asset('storage') . '/' .$candidate->profile_photo_path }}" alt="profile"
                         class="rounded-circle ml-4" style="width: 125px; height: 125px">
                 
                         <strong class="text-xl mt-1"> {{" ". $candidate->name }} </strong>
                         <p>Member since {{ $candidate->created_at->format('Y/m/d') }}</p>
-                    
                     </div>
 
                     <div class="col-10 px-3 py-3 mb-5 hover:shadow-lg border border-gray-500 bg-gray-200">
@@ -40,7 +44,6 @@
                         </span>
                         <div><a href="{{ route('message.create', $candidate->id) }}" class="btn btn-success mt-3"><i class="fas fa-comments"><span class="ml-3">Start discussion</span></i></a></div>
                     </div>
-            
                 @endforeach
             </div>
             {{ $candidates->links() }} 

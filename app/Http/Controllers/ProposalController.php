@@ -62,8 +62,13 @@ class ProposalController extends Controller
             $userQuiASendProposal= $proposal->user->email;
             $titleDuJob= $proposal->job->title;
             $userDuJob= $proposal->job->user;
+            // try {
+            //     Mail::to($userQuiASendProposal)->send(new ValidatedProposalMail($userDuJob, $titleDuJob));
 
-            // Mail::to($userQuiASendProposal)->send(new ValidatedProposalMail($userDuJob, $titleDuJob));
+            // } catch (\Throwable $th) {
+            //     throw $th->exeption;
+            // }
+
 
             $conversation = Conversation::updateOrCreate([
                 'from' => auth()->user()->id,

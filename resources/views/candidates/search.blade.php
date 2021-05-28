@@ -1,9 +1,10 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <p class="text-green-600">Job seekers list</p>
-        </h2>
-    </x-slot>
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
+            <p class="text-green-600 font-semibold text-xl">Job seekers list</p>
+        </div>
+    </header>
+
 
     <div class="container form-group my-5">
         <form action="{{ route('candidates.search') }}" class="d-flex">
@@ -11,6 +12,12 @@
             <input type="text" name="q" value="{{ request()->q ?? '' }}" class="form-control w-50 ml-5">
             <button class="btn btn-success ml-1">search</button>
         </form>
+        @if ($errors->has('q'))
+        <span class="text-red-400 text-sm block" role="alert">
+            <strong>{{ $errors->first('q') }}</strong>
+        </span>
+        @endif
+
 
         @if (request()->input('q'))
             <h6 class="ml-20 mt-2">{{ $candidates->total() }} result(s) for the search "{{ request()->q }}"</h6>

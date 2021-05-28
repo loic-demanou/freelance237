@@ -29,3 +29,12 @@
 .how{
     margin-bottom: 100px;
 }
+
+/* la page des candidats */
+
+@media screen and (max-width: 767px){
+    input > .input-search{
+        display: none;
+
+    }
+}

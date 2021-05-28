@@ -3,7 +3,7 @@
             <span class="text-sm text-gray-600 d-flex mb-2">
                 
                 <img src="{{ asset('storage') . '/' .$job->user->profile_photo_path }}" style="width: 25px; height: 25px"
-                class="rounded-circle mr-3 ">
+                class="rounded-circle mr-3" alt="profile_photo">
 
                 <strong class="mr-3"> {{" ". $job->user->name }} </strong>
                 {{ $job->created_at->diffForHumans() }}

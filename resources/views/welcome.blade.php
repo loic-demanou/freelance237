@@ -10,8 +10,8 @@
     <body class="antialiased">
 
         <x-app-layout>
-            <x-slot name="header" >
-            </x-slot>
+            {{-- <x-slot name="header" >
+            </x-slot> --}}
             
             <div class="container">
                 <div class="total">
@@ -37,14 +37,14 @@
                     </div>
                     <div class="row text-center pb-10">
                         <div class="col-sm-12 col-md-4 col-lg-4">
-                            <img src="{{ asset('img/home1.PNG') }}"  style="margin-left: 100px">
+                            <img src="{{ asset('img/home1.PNG') }}"  alt="how" style="margin-left: 100px">
                             <p class="text-2xl my-2" style="" >Find</p>
                             <article>
                                 Post a job and find quality job seeker
                             </article>
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4">
-                            <img src="{{ asset('img/home2.PNG') }}"  style="margin-left: 120px">
+                            <img src="{{ asset('img/home2.PNG') }}"  alt="how" style="margin-left: 120px">
                             <p class="text-2xl my-2" style="" >Hire</p>
                             <article>
                                 Browse job seekers profiles and 
@@ -53,7 +53,7 @@
                             </article>
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4">
-                            <img src="{{ asset('img/home3.PNG') }}"  style="margin-left: 120px">
+                            <img src="{{ asset('img/home3.PNG') }}"  alt="how" style="margin-left: 120px">
                             <p class="text-2xl my-2" style="" >Work</p>
                             <article>
                                 Browse job seekers profiles and 

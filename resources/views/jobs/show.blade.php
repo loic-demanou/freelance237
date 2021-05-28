@@ -1,9 +1,15 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <p class="text-green-600">Details</p>
         </h2>
-    </x-slot>
+    </x-slot> --}}
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
+            <p class="text-green-600 font-semibold text-xl">Details</p>
+        </div>
+    </header>
+
 
 <div class="container mt-4">
     <div class="row">
@@ -13,7 +19,7 @@
                 <div class="px-3 py-3 mb-5 hover:shadow-lg rounded border border-gray-500 bg-gray-200">
                     <span class="text-sm text-gray-600 d-flex mb-2">
                         <img src="{{ asset('storage') . '/' .$jobs->user->profile_photo_path }}"
-                        class="rounded-circle mr-3" style="width: 25px; height: 25px">
+                        class="rounded-circle mr-3" alt="profil photo" style="width: 25px; height: 25px">
                         <strong class="mr-3"> {{" ". $jobs->user->name }} </strong>
                         {{ $jobs->created_at->diffForHumans() }}
                     </span>
@@ -76,7 +82,7 @@
             <p style="font-size: 18px" class="mb-3" id="">About the client</p>
             <div class="d-flex">
                 <img src="{{ asset('storage') . '/' .$jobs->user->profile_photo_path }}" width="60px"
-                class="rounded-circle mr-3" style="width: 100px; height:100px" id="img">
+                class="rounded-circle mr-3" alt="profil photo" style="width: 100px; height:100px" id="img">
                 <ul>
                     <li>
                         <p><strong class="ml-3 text-2xl"> {{" ". $jobs->user->name }} </strong></p><br>
