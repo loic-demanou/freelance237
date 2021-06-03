@@ -10,16 +10,16 @@
                 
             </span>
             <div class="flex justify-between">
-                <div class="text-xl font-bold text-green-600">{{ $job->title }}
+                <div class="text-xl font-bold text-indigo-600">{{ $job->title }}
                     @if ($job->status==1)
-                        <span class="badge rounded-pill bg-success ml-3" style="font-size:11px">Available</span>
+                        <span class="badge rounded-pill ml-3" style="font-size:11px; background-color:#6875FC;">Available</span>
                     @else
                         <span class="badge rounded-pill bg-danger ml-3" style="font-size:11px">Unavailable</span>
                     @endif
                 </div>
                 <button class="h-6 w-6 text-gray-600 focus:outline-none" wire:click="addLike">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="{{ $job->isLiked() ? 'green' : 'white' }}"
-                        viewBox="0 0 24 24" stroke="green">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="{{ $job->isLiked() ? 'indigo' : 'white' }}"
+                        viewBox="0 0 24 24" stroke="indigo">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
@@ -48,7 +48,7 @@
             </span>
             <span class="ml-5">
                 <a href="{{ route('jobs.show', $job->id) }}" 
-                    class="text-green-500" style="text-decoration: underline;">Show more
+                    class="text-indigo-500" style="text-decoration: underline;">Show more
                 </a>
             </span>
             <div class="text-sm text-gray-600 mt-2 ">There is {{ $job->proposals->count() }} @choice('proposal|proposals',

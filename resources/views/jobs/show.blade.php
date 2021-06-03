@@ -1,12 +1,12 @@
 <x-app-layout>
     {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <p class="text-green-600">Details</p>
+            <p class="text-indigo-600">Details</p>
         </h2>
     </x-slot> --}}
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-            <p class="text-green-600 font-semibold text-xl">Details</p>
+            <p class="text-indigo-600 font-semibold text-xl">Details</p>
         </div>
     </header>
 
@@ -24,16 +24,16 @@
                         {{ $jobs->created_at->diffForHumans() }}
                     </span>
                     <div class="flex justify-between">
-                        <div class="text-3xl font-bold text-green-600 mb-1">{{ $jobs->title }}
+                        <div class="text-3xl font-bold text-indigo-600 mb-1">{{ $jobs->title }}
                             @if ($jobs->status==1)
-                                <span class="badge rounded-pill bg-success ml-3" style="font-size:12px">Available</span>
+                            <span class="badge rounded-pill ml-3" style="font-size:11px; background:#6875FC">Available</span>
                             @else
                                 <span class="badge rounded-pill bg-danger ml-3" style="font-size:12px">Unvailable</span>
                             @endif
                         </div>
                         <button class="h-6 w-6 text-gray-600 focus:outline-none" wire:click="addLike">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="{{ $jobs->isLiked() ? 'green' : 'white' }}"
-                                viewBox="0 0 24 24" stroke="green">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="{{ $jobs->isLiked() ? 'indigo' : 'white' }}"
+                                viewBox="0 0 24 24" stroke="indigo">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
@@ -56,7 +56,8 @@
 
             <section x-data="{open:false}">
             
-                <a href="#" class="btn btn-success mb-2" @click="open=!open"> Check here to submit your application </a>
+                <x-jet-button style="margin-bottom: 10px"><a href="#"  style="color:white" 
+                @click="open=!open"> Check here to submit your application </a></x-jet-button>
                 <div class="row">
                     <form class='form' x-show ="open" x-cloak action="{{ route('proposals.store', $jobs) }}" method="post">
                         @csrf
@@ -64,7 +65,7 @@
                             <textarea name="content" cols="60" rows="10" class="form-control" value="{{ old('content') }}"  autocomplete="content" autofocus></textarea>
                         <br>
                         @if ($jobs->status==1)
-                            <button type="submit" class="btn btn-primary" >Submit my cover letter</button>
+                            <button type="submit" class="btn btn-primary">Submit my cover letter<i class="fas fa-check ml-3"></i></button>
                         @else
                         <button type="submit" class="btn btn-primary" disabled >Submit my cover letter</button>
                         <span class="text-red-500">This mission is unavailable for the moment !</span>
@@ -100,11 +101,11 @@
     {{-- <div class="container mt-3">
 
             <div class="px-3 py-5 mb-3 hover:shadow-lg rounded border border-gray-500 bg-gray-200">
-                <h2 class="text-xl font-bold text-green-600">{{ $jobs->title }}</h2>
+                <h2 class="text-xl font-bold text-indigo-600">{{ $jobs->title }}</h2>
                 <p class="text-md text-gray-800">{{ $jobs->description }}</p>
                 <div class="flex items-center">
                     @if ($jobs->status==1)
-                        <span class="h-3 w-3 bg-green-400 rounded-full mr-3"></span><p class="mr-4">Available</p>
+                        <span class="h-3 w-3 bg-indigo-400 rounded-full mr-3"></span><p class="mr-4">Available</p>
                     @else
                         <span class="h-3 w-3 bg-red-400 rounded-full mr-3"></span><p class="mr-4">Unavailable </p>
                     @endif

@@ -10,15 +10,16 @@
     </x-slot> --}}
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-            <span class="text-green-600 font-semibold text-xl">List of jobs</span>
+            <span class="text-indigo-600 font-semibold text-xl">List of jobs</span>
             @if (auth()->user() && auth()->user()->role_id==2)
-            <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">
-                <i class="fas fa-plus mr-2"></i>Create a new job</a>
+            <a href="{{ route('jobs.create') }}" style="float:right;">
+            <x-jet-button><i class="fas fa-plus mr-2"></i>Create a new job</x-jet-button></a>
+            
             @endif
 
             @if (auth()->user() && auth()->user()->role_id==1)
-            <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">
-                <i class="fas fa-plus mr-2"></i>Make my CV</a>
+            <a href="{{ route('jobs.create') }}" style="float:right;">
+                <x-jet-button><i class="fas fa-plus mr-2"></i>Make my CV</x-jet-button></a>
             @endif
         </div>
     </header>

@@ -6,7 +6,7 @@
     </x-slot> --}}
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-            <p class="text-green-600 font-semibold text-xl">Edit job</p>
+            <p class="text-indigo-600 font-semibold text-xl">Edit job</p>
         </div>
     </header>
 
@@ -87,7 +87,7 @@
 
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary px-5">Update</button>
+                    <x-jet-button class="px-5">Update <i class="fas fa-edit ml-3 text-lg"></i></x-jet-button>
                 </div>
             </div>
         </form>

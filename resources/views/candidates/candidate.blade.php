@@ -1,14 +1,16 @@
 <x-app-layout>
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-            <p class="text-green-600 font-semibold text-xl">Job seekers list</p>
+            <p class="text-indigo-600 font-semibold text-xl">Job seekers list</p>
         </div>
     </header>
     <div class="container form-group my-5">
         <form action="{{ route('candidates.search') }}" class="d-flex">
             <label class="mr-5 ml-20" style="font-weight: 500">Find job seeker</label>
-            <input type="text" name="q" value="{{ request()->q ?? '' }}" class="form-control w-50 ml-5 input-search">
-            <button class="btn btn-success ml-1">search</button>
+            <input type="text" name="q" value="{{ request()->q ?? '' }}" class="form-control ml-5 input-search"
+            placeholder="eg: John Doe, web developer..." style="width: 40%">
+            {{-- <button class="btn btn-success ml-1">search</button> --}}
+            <x-jet-button class="ml-1">Search</x-jet-button>
         </form>
         @if ($errors->has('q'))
         <span class="text-red-400 text-sm block" role="alert">
@@ -32,7 +34,7 @@
                     </div>
 
                     <div class="col-10 px-3 py-3 mb-5 hover:shadow-lg border border-gray-500 bg-gray-200">
-                            <div class="text-xl font-bold text-green-600 mb-1">{{ $candidate->presentation }}</div>
+                            <div class="text-xl font-bold text-black-600 mb-1">{{ $candidate->presentation }}</div>
                         @if ((strlen($candidate->description)>200))
                             <p class="text-md text-gray-800 mx-3 py-2" style="">{{ substr($candidate->description, 0, 200) .'...'}}</p>
                         @else
@@ -42,7 +44,9 @@
                         <span class="text-sm text-gray-600 mr-5"><i class="fa fa-money-bill mr-3 " style="font-size:20px"></i>
                             {{ number_format( $candidate->rate, 2, ",", " " ) }} Fcfa/Hour
                         </span>
-                        <div><a href="{{ route('message.create', $candidate->id) }}" class="btn btn-success mt-3"><i class="fas fa-comments"><span class="ml-3">Start discussion</span></i></a></div>
+                        <div><x-jet-button class="mt-3"><a href="{{ route('message.create', $candidate->id) }}"><i class="fas fa-comments text-white">
+                            <span class="ml-3" style="color: white">Start discussion</span></i></a></x-jet-button>
+                        </div>
                     </div>
                 @endforeach
             </div>

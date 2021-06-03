@@ -9,4 +9,11 @@ class UserDetail extends Model
 {
     use HasFactory;
     protected $fillable = ['fullname', 'email', 'address', 'phone', 'user_id', 'summary'];
+
+    // public function user()
+    // {
+    //     return $this->BelongsTo('App\Models\User');
+    // }
+
 }
+

@@ -6,7 +6,7 @@
     </x-slot> --}}
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-            <p class="text-green-600 font-semibold text-xl">Create a new job</p>
+            <p class="text-indigo-600 font-semibold text-xl">Create a new job</p>
         </div>
     </header>
 
@@ -86,7 +86,7 @@
 
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary px-5">Create</button>
+                    <x-jet-button class="px-5">Create<i class="fas fa-plus ml-3"></i></x-jet-button>
                 </div>
             </div>
         </form>

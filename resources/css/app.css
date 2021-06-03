@@ -44,7 +44,7 @@
   height: 100%;
   background-color: rgba(0,0,0,0.5);
 }
-
+/* 
 .slide:nth-child(1) {
   background-image: url(bg-1.jpg);
 }
@@ -55,7 +55,7 @@
 
 .slide:nth-child(3) {
   background-image: url(bg-3.jpg);
-}
+} */
 
 .slide-data {
   position: absolute;

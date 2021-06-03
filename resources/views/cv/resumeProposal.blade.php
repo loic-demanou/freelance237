@@ -23,25 +23,26 @@
     </style>
 </head>
 <body>
+    {{-- <p>{{ $proposal->user->detail }}</p> --}}
     <div class="container">
         <div class="row">
             <h3>Resume</h3>
-            @if ($user->detail and $user->education and $user->experiences and $user->skills)
+            @if ($proposal->user->detail and $proposal->user->education and $proposal->user->experiences and $proposal->user->skills)
 
             <section class="Heading">
-                <h4>{{ $user->detail->fullname }}</h4>
-                <p>{{ $user->detail->email }}</p>
-                <p>{{ $user->detail->phone }}</p>
-                <p>{{ $user->detail->address }}</p>
+                <h4>{{ $proposal->user->detail->fullname }}</h4>
+                <p>{{ $proposal->user->detail->email }}</p>
+                <p>{{ $proposal->user->detail->phone }}</p>
+                <p>{{ $proposal->user->detail->address }}</p>
 
             </section>
             <section class="summary">
-                <p>{{ $user->detail->summary }}</p>
+                <p>{{ $proposal->user->detail->summary }}</p>
             </section>
 
             <section class="Education">
                 <h3>Education</h3>
-                @foreach ($user->education as $ed)
+                @foreach ($proposal->user->education as $ed)
                 <p></p>
                     <h4>Degree: {{ $ed->degree }}</h4>
                     <p>School: {{ $ed->school_name }}</p>
@@ -51,7 +52,7 @@
             </section>
             <section class="Work">
                 <h3>Work history</h3>
-                @foreach ($user->experiences as $work)
+                @foreach ($proposal->user->experiences as $work)
                     <h4>Job title: {{ $work->job_title }}</h4>
                     <p>School: {{ $work->employer }}</p>
                     <p>Start date: {{ $work->start_date }}</p>
@@ -60,7 +61,7 @@
             </section>
             <section class="Skills">
                 <h3>Skills</h3>
-                @foreach ($user->skills as $skill)
+                @foreach ($proposal->user->skills as $skill)
                     <h4>{{ $skill->name }} ({{ $skill->rating }} out of 5)</h4>
                 @endforeach
             </section>

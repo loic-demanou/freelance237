@@ -125,8 +125,10 @@ Route::group(['middleware'=> ['auth']], function(){
         Route::get('resume', [ResumeController::class, 'index'])->name('resume.index');
         Route::get('resume/download', [ResumeController::class, 'download'])->name('resume.download');
 
-        // Route::get('resumeProposan', [ResumeProposalController::class, 'index'])->name('resume-proposal.index');
-        // Route::get('resume/download', [ResumeProposalController::class, 'download'])->name('resume-proposal.download');
+        // routes that show and download the cv of the users that sent thier proposals
+
+        Route::get('resumeProposal', [ResumeProposalController::class, 'index'])->name('resume-proposal.index');
+        Route::get('resumeProposal/download', [ResumeProposalController::class, 'download'])->name('resume-proposal.download');
 
 
         // end CVs controllers
