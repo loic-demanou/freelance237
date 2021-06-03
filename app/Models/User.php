@@ -11,7 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends \TCG\Voyager\Models\User
 {
     use HasApiTokens;
     use HasFactory;
@@ -96,4 +96,28 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Job');
     }
+
+    public function detail()
+    {
+        return $this->hasOne('App\Models\UserDetail');
+    }
+
+    public function education()
+    {
+        return $this->hasMany('App\Models\Education');
+
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany('App\Models\Experience');
+
+    }
+
+    public function skills()
+    {
+        return $this->hasMany('App\Models\Skill');
+
+    }
+
 }

@@ -10,8 +10,8 @@
     <body class="antialiased">
 
         <x-app-layout>
-            <x-slot name="header" >
-            </x-slot>
+            {{-- <x-slot name="header" >
+            </x-slot> --}}
             
             <div class="container">
                 <div class="total">
@@ -22,10 +22,10 @@
                                 the full potential of your business.
                             </article>
                             <div class="link">
-                                <a href="{{ route('candidates.list') }}" class="btn text-xl pt-3 font-weight-bold" 
+                                <a href="{{ route('candidates.list') }}" class="btn text-xl pt-3 font-weight-bold mr-1" 
                                 style="background-color: #48406D; color:white; height:50px; width:140px">Find talent</a>
                                 <a href="{{ route('jobs.index') }}" class="btn text-xl pt-3 font-weight-bold"
-                                style="background: #E4E4E4; height:50px; width:140px">Find work</a>
+                                style="background: #E4E4E4; height:50px; width:140px; border:1px solid #48406D">Find work</a>
                             </div>
                         </div>
                         <div class="image">
@@ -37,14 +37,14 @@
                     </div>
                     <div class="row text-center pb-10">
                         <div class="col-sm-12 col-md-4 col-lg-4">
-                            <img src="{{ asset('img/home1.PNG') }}"  style="margin-left: 100px">
+                            <img src="{{ asset('img/home1.PNG') }}"  alt="how" style="margin-left: 100px">
                             <p class="text-2xl my-2" style="" >Find</p>
                             <article>
                                 Post a job and find quality job seeker
                             </article>
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4">
-                            <img src="{{ asset('img/home2.PNG') }}"  style="margin-left: 120px">
+                            <img src="{{ asset('img/home2.PNG') }}"  alt="how" style="margin-left: 120px">
                             <p class="text-2xl my-2" style="" >Hire</p>
                             <article>
                                 Browse job seekers profiles and 
@@ -53,7 +53,7 @@
                             </article>
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-4">
-                            <img src="{{ asset('img/home3.PNG') }}"  style="margin-left: 120px">
+                            <img src="{{ asset('img/home3.PNG') }}"  alt="how" style="margin-left: 120px">
                             <p class="text-2xl my-2" style="" >Work</p>
                             <article>
                                 Browse job seekers profiles and 

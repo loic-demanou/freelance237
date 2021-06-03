@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->integer('rate')->nullable()->default(0);
 
             $table->rememberToken();
-            $table->foreignId('role_id')->nullable()->constrained();
+            // $table->foreignId('role_id')->nullable()->constrained();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->timestamps();

@@ -17,7 +17,7 @@ class UserController extends Controller
     public function search()
     {
         request()->validate([
-            'q' => 'required | min:3'
+            'q' => ['required', 'min:3'],
         ]);
 
         $q= request()->input('q');

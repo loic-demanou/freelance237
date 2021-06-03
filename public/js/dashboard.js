@@ -7,7 +7,7 @@ $(function() {
     show.hide();
     deplier.click(function () { 
         $(this).next().toggle('fast');
-        console.log("OKKKK");
+        // console.log("OKKKK");
     });
 
 

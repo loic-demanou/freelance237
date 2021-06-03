@@ -23,11 +23,12 @@ class JobController extends Controller
         //$jobs=Job::online()->latest()->get();
         // $proposal=DB::table('proposals')->where('user_id')->select();
 
-        $jobs=Job::latest()->paginate(8);
+        $jobs=Job::latest()->paginate(10);
 
         // return view('jobs.index', compact('jobs'), compact('proposal'));
         return view('jobs.index', [
             'jobs'=>$jobs,
+            
         ]);
     }
 

@@ -12,7 +12,7 @@
         <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"> --}}
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
 
@@ -34,14 +34,14 @@
             @livewire('navigation-dropdown')
 
             {{-- l'extension de mon header sans le heading --}}
-            {{-- @yield('content') --}}
+            @yield('content')
 
             <!-- Page Heading -->
-            <header class="bg-white shadow">
+            {{-- <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
-            </header>
+            </header> --}}
             <livewire:flash />
 
             {{-- <div>
@@ -57,7 +57,7 @@
                     {{ session()->get('message') }}
                 </div>
             @endif
-            @if (count($errors) > 0)
+            {{-- @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul class="my-0 container">
                         @foreach ($errors->all() as $error)
@@ -65,7 +65,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif --}}
 
 
             <!-- Page Content -->
@@ -79,12 +79,14 @@
         @include('flashy::message')
 
         @include('layouts.footer')
+        
+        <script src="{{ asset('js/mdb.min.js') }}"></script>
         <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
-        <script src="//code.jquery.com/jquery.js"></script>
+        {{-- <script src="//code.jquery.com/jquery.js"></script> --}}
         <script src="{{ mix('js/app.js') }}"></script>
-        
+
         <script src="{{ asset('js/dashboard.js') }}"></script>
-        
+
         @livewireScripts
 
     <!-- Insertion du fichier js du package yoeunes/notify -->

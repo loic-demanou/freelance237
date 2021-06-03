@@ -1,9 +1,15 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <p class="text-green-600">Create a new job</p>
+            <p class="text-green-600">Edit job</p>
         </h2>
-    </x-slot>
+    </x-slot> --}}
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
+            <p class="text-indigo-600 font-semibold text-xl">Edit job</p>
+        </div>
+    </header>
+
 
     <div class="container mt-3">
         <h2 class="text-gray-600" style="font-size:25px">Fill-in the form to update a mission that you published</h2>
@@ -81,7 +87,7 @@
 
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary px-5">Update</button>
+                    <x-jet-button class="px-5">Update <i class="fas fa-edit ml-3 text-lg"></i></x-jet-button>
                 </div>
             </div>
         </form>
