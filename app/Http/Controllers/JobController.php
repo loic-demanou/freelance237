@@ -80,10 +80,10 @@ class JobController extends Controller
             // ]);
             // dd($jobs->questions);
             
-            dd($request->questionJobs);
-            $jobs->questions()->attach(['question_title' => 
-            $request->questionJobs]);
-            dd($jobs);
+            // dd($request->questionJobs);
+            // $jobs->questions()->attach(['question_title' => 
+            // $request->questionJobs]);
+            // dd($jobs);
         }
 
 

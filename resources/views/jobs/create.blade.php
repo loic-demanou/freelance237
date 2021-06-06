@@ -84,7 +84,7 @@
 
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div class="col-12">
                             <p>Questionnaire</p>
                             @foreach ([0,1,2] as $index)
@@ -96,7 +96,7 @@
                             @endforeach
                             <button class="btn btn-secondary mt-2"><i class="fas fa-plus"></i></button>
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- Hour<input type="time"> --}}
 
