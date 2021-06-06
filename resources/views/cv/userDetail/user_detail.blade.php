@@ -21,6 +21,12 @@
                             <strong> Address : </strong> {{ $userDetail->address }}
                         </li>
                         @endif
+                        @if ($userDetail->summary)
+                        <li>
+                            <strong> Address : </strong> {!! $userDetail->summary !!}
+                        </li>
+                        @endif
+
                     </ul>
                     <a href="{{ route('user-detail.edit', $userDetail) }}" class="btn btn-sm btn-primary">Edit</a>
                     {{-- <a href="{{ route('userDetail.delete', $userDetail) }}" class="btn btn-sm btn-danger">Delete</a> --}}

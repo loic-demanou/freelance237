@@ -27,9 +27,9 @@
                 
             </div>
             @if ((strlen($job->description)>200))
-                <p class="text-md text-gray-800 mx-3 py-2" style="">{{ substr($job->description, 0, 200) .'...'}}</p>
+                <p class="text-md text-gray-800 mx-3 py-2" style="">{!! substr($job->description, 0, 200) .'...' !!}</p>
             @else
-                <p class="text-md text-gray-800 py-2" style="">{{ substr($job->description, 0, 200) }}</p>
+                <p class="text-md text-gray-800 py-2" style="">{!! substr($job->description, 0, 200) !!}</p>
             @endif
 
             {{-- <div class="flex items-center">

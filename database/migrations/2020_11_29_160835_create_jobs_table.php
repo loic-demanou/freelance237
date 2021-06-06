@@ -20,7 +20,7 @@ class CreateJobsTable extends Migration
             $table->boolean('status')->default(1);
             $table->text('attachment')->nullable();
             $table->unsignedBigInteger('price');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

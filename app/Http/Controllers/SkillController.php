@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use MercurySeries\Flashy\Flashy;
 
 class SkillController extends Controller
 {
@@ -39,9 +40,10 @@ class SkillController extends Controller
     {
         $request->validate([
             'name'=>['required'],
-            'rating' => ['required', 'integer', 'max:5'],
+            'rating' => ['required', 'integer', 'max:1'],
         ]);
         auth()->user()->skills()->create($request->all());
+        flashy("New skill added !");
 
         return redirect()->route('skill.index');
     }
@@ -80,9 +82,10 @@ class SkillController extends Controller
     {
         $request->validate([
             'name'=>['required'],
-            'rating' => ['required', 'integer', 'max:5'],
+            'rating' => ['required', 'integer', 'max:1'],
         ]);
         $skill->update($request->all());
+        flashy("Skills updated");
 
         return redirect()->route('skill.index');
 
@@ -97,6 +100,8 @@ class SkillController extends Controller
     public function destroy(Skill $skill)
     {
         $skill->delete();
+        flashy("Skill deleted !");
+
         return back();
 
     }

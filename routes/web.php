@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminJobController;
+use App\Http\Controllers\AdminRoleController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ConversationController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +21,7 @@ use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ResumeProposalController;
+use App\Http\Controllers\TestController;
 use Illuminate\Routing\RouteGroup;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -34,6 +39,17 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
+
+Route::get('admin/roles', [AdminRoleController::class, 'index'])->name('adminRole.index');
+
+Route::get('admin/users-management', [AdminUserController::class, 'index'])->name('adminUser.index');
+
+Route::get('admin/jobs-management', [AdminJobController::class, 'index'])->name('adminJob.index');
+
+
+
 
 Route::get('/login/google', [LoginController::class, 'redirectToProvider'])->name('loginGoogle');
 
@@ -145,6 +161,3 @@ Route::group(['middleware'=> ['auth', 'proposal']], function(){
 
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});

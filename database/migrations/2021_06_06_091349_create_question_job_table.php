@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateQuestionJobTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('question_job', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('question_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('job_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('question_title')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('question_job');
     }
 }

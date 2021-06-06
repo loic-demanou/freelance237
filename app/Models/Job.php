@@ -12,7 +12,7 @@ class Job extends Model
     use HasFactory;
     use Notifiable;
 
-    protected $fillable=['title', 'description', 'price', 'status', 'user_id'];
+    protected $fillable=['title', 'description', 'price', 'status', 'user_id',];
 
     // public function scopeSearch($field, $string)
     // {
@@ -45,4 +45,10 @@ class Job extends Model
             return auth()->user()->likes->contains('id', $this->id);
         }
     }
+
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question');
+    }
+
 }

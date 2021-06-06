@@ -52,11 +52,6 @@
                 @endif
             </div> --}}
 
-            @if (session()->has('message'))
-                <div class="alert alert-{{ session('notification.type') }} container">
-                    {{ session()->get('message') }}
-                </div>
-            @endif
             {{-- @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul class="my-0 container">
@@ -76,22 +71,31 @@
 
         @stack('modals')
 
-        @include('flashy::message')
 
         @include('layouts.footer')
         
         <script src="{{ asset('js/mdb.min.js') }}"></script>
         <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
-        {{-- <script src="//code.jquery.com/jquery.js"></script> --}}
+        <script src="//code.jquery.com/jquery.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
         <script src="{{ mix('js/app.js') }}"></script>
 
         <script src="{{ asset('js/dashboard.js') }}"></script>
+        
+        @if (session()->has('notification.message'))
+        <div class="alert alert-{{ Session::get('notification.type') }}">
+            {{ Session::get('notification.message') }}
+        </div>
+    @endif
 
         @livewireScripts
+        @include('flashy::message')
+
+        @yield('scripts')
 
     <!-- Insertion du fichier js du package yoeunes/notify -->
-    @notify_js
-    @notify_render
+    {{-- @notify_js
+    @notify_render --}}
 
     </body>
 </html>

@@ -29,7 +29,7 @@
                     <br>
 
                         <label for="">Description</label>
-                        <textarea name="description" cols="30" rows="5" class="form-control" @error('description')
+                        <textarea name="description" cols="30" rows="5" id="job-textarea" class="form-control" @error('description')
                             is-invalid @enderror name="description" value=""
                             autocomplete="description" autofocus>{{ $jobs->description }}</textarea>
                         @error('description')
@@ -92,4 +92,14 @@
             </div>
         </form>
     </div>
+    @section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#job-textarea' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    @endsection
+
 </x-app-layout>

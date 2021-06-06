@@ -39,11 +39,8 @@
                             </svg>
                         </button>
                     </div>
-                    @if ((strlen($jobs->description)>200))
-                        <p class="text-md text-gray-800 mx-3 py-2" style="">{{ substr($jobs->description, 0, 200) .'...'}}</p>
-                    @else
-                        <p class="text-md text-gray-800 py-2" style="">{{ substr($jobs->description, 0, 200) }}</p>
-                    @endif
+                        <p class="text-md text-gray-800 py-2" style="">{!! $jobs->description !!}</p>
+
                     <span class="text-sm text-gray-600"><i class="fa fa-money-bill mr-3 " style="font-size:20px"></i>
                         {{ number_format( $jobs->price, 2, ",", " " ) }} Fcfa
                     </span>
@@ -53,7 +50,11 @@
                 </div>
             </div>
             
-
+                {{-- l'endroit ou il yavais le boutton de soumission --}}
+    
+        </div>
+    
+        <div class="col-md-4 col-sm-12 mb-4">
             <section x-data="{open:false}">
             
                 <x-jet-button style="margin-bottom: 10px"><a href="#"  style="color:white" 
@@ -62,7 +63,7 @@
                     <form class='form' x-show ="open" x-cloak action="{{ route('proposals.store', $jobs) }}" method="post">
                         @csrf
                         <div class="col-md-12 mb-5">
-                            <textarea name="content" cols="60" rows="10" class="form-control" value="{{ old('content') }}"  autocomplete="content" autofocus></textarea>
+                            <textarea name="content" cols="60" rows="10" id="proposal-textarea" class="form-control" value="{{ old('content') }}"  autocomplete="content" autofocus></textarea>
                         <br>
                         @if ($jobs->status==1)
                             <button type="submit" class="btn btn-primary">Submit my cover letter<i class="fas fa-check ml-3"></i></button>
@@ -76,10 +77,7 @@
                     </form>
                 </div>
             </section>
-    
-        </div>
-    
-        <div class="col-md-4 col-sm-12 mb-4">
+
             <p style="font-size: 18px" class="mb-3" id="">About the client</p>
             <div class="d-flex">
                 <img src="{{ asset('storage') . '/' .$jobs->user->profile_photo_path }}" width="60px"
@@ -116,5 +114,15 @@
 
             </div>
     </div> --}}
+    @section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#proposal-textarea' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    @endsection
+
 
 </x-app-layout>

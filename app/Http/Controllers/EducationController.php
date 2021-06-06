@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Education;
 use Illuminate\Http\Request;
+use MercurySeries\Flashy\Flashy;
 
 class EducationController extends Controller
 {
@@ -46,6 +47,8 @@ class EducationController extends Controller
 
         ]);
         auth()->user()->education()->create($request->all());
+        flashy("New education added");
+
         return redirect()->route('education.index');
 
     }
@@ -91,6 +94,8 @@ class EducationController extends Controller
 
         ]);
         $education->update($request->all());
+        flashy("Education updated !");
+
         return redirect()->route('education.index');
 
     }
@@ -104,6 +109,8 @@ class EducationController extends Controller
     public function destroy(Education $education)
     {
         $education->delete();
+        flashy("Education deleted");
+
         
         return back();
     }

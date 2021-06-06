@@ -6,6 +6,7 @@ use App\Models\Conversation;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Message;
+use MercurySeries\Flashy\Flashy;
 
 
 class ConversationController extends Controller

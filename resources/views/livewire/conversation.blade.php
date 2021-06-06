@@ -8,6 +8,9 @@
                 <p>{{ $message->content }}</p>
             </div>
         @endforeach
-        <textarea wire:keydown.enter.prevent="sendMessage" wire:model="message" class="border rounded px-3 py-4 mt-3 mb-5 shadow-md w-full"></textarea>
+        <textarea id="message-textarea" wire:keydown.enter.prevent="sendMessage" wire:model="message" class="border rounded px-3 py-4 mt-3 mb-5 shadow-md w-full"></textarea>
     </div>
 </div>
+@section('scripts')
+@endsection
+

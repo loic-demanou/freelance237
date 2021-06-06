@@ -75,7 +75,7 @@
                         <label for="summary" class="mb-1">Summary
                             <strong style="color:red; ">*</strong>
                         </label>
-                        <textarea name="summary"  autocomplete="summary" cols="30" rows="4" class="form-control">{{ $userDetail->summary }}</textarea>
+                        <textarea name="summary" id="user-textarea" autocomplete="summary" cols="30" rows="4" class="form-control">{{ $userDetail->summary }}</textarea>
                         @error('summary')
                         <span class="text-red-400 text-sm block" role="alert">
                             <strong>{{ $message }}</strong>
@@ -90,6 +90,15 @@
         
         </form>
     </div>
-    
+    @section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#user-textarea' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    @endsection
+
 
 </x-app-layout>

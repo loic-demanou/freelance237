@@ -105,7 +105,7 @@
             <div class="col-8 mx-36 offset-2 mb-2">
                 <div class="form-group">
                     <label for="description" class="mb-1">Description</label>
-                    <textarea name="description"  autocomplete="description" cols="30" rows="4" class="form-control">{{ $experience->description }}</textarea>
+                    <textarea name="description" id="experience-textarea" autocomplete="description" cols="30" rows="4" class="form-control">{{ $experience->description }}</textarea>
                     @error('description')
                     <span class="text-red-400 text-sm block" role="alert">
                         <strong>{{ $message }}</strong>
@@ -119,6 +119,15 @@
         
         </form>
     </div>
+    @section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#experience-textarea' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    @endsection
     
 
 </x-app-layout>

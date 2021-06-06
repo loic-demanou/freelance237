@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserDetail;
 use Illuminate\Http\Request;
+use MercurySeries\Flashy\Flashy;
 
 class UserDetailController extends Controller
 {

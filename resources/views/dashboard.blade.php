@@ -14,9 +14,10 @@
             @if (auth()->user() && auth()->user()->role_id == 2)
                 {{-- <a href="{{ route('jobs.create') }}" class="btn btn-primary" style="float:right;">
                     <i class="fas fa-plus mr-2"></i>Create a new job</a> --}}
-                    
-                <a href="{{ route('jobs.create') }}" style="float: right;"><x-jet-button><i class="fas fa-plus mr-2">
-                    </i>Create a new job</x-jet-button>
+
+                <a href="{{ route('jobs.create') }}" style="float: right;">
+                    <x-jet-button><i class="fas fa-plus mr-2">
+                        </i>Create a new job</x-jet-button>
                 </a>
             @endif
 
@@ -46,20 +47,28 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                             </svg> Vos propositions ({{ auth()->user()->proposals->count() }})</h2>
+
                         @foreach (auth()->user()->proposals as $proposal)
-                            <div class="mb-3 {{ $proposal->validated ? 'text-green-400' : '' }}">
+                            <div class="mb-3 {{ $proposal->validated ? 'text-green-500' : '' }}">
                                 <span class="block  items-center">
 
                                     Pour la mission <span class="font-semibold">"{{ $proposal->job->title }}"</span>
+                                    @if ($proposal->validated)
+                                        <span class="badge rounded-pill ml-3"
+                                            style="font-size:10px; background-color: indigo">
+                                            validated <i class="fas fa-check"></i></span>
+                                    @endif
+
                                 </span>
                                 <span>Lettre de motivation :</span>
                                 <span class="badge rounded-pill bg-success deplier ml-2"
                                     style="font-size:11px; cursor:pointer" id="deplier">
                                     Voir <i class="fas fa-caret-down"></i></span>
                                 <article class="show-depli mt-3" id="show-depli" style="text-align: justify">
-                                    {{ $proposal->coverLetter->content }}</article>
+                                    {!! $proposal->coverLetter->content !!}</article>
                             </div>
                         @endforeach
+
                     </section>
 
 
@@ -209,7 +218,7 @@
                                             </span>
                                             <article class="show-depli mt-3" id="show-depli"
                                                 style="text-align: justify">
-                                                "{{ $proposal->coverLetter->content }}"
+                                                "{!! $proposal->coverLetter->content !!}"
                                             </article>
 
                                         </li>
@@ -231,8 +240,7 @@
                                             <!-- Button trigger modal -->
                                             <button type="button" class="btn btn-primary" data-mdb-toggle="modal"
                                                 data-mdb-target="#exampleModal">
-                                                View of cv <i class="far fa-file-pdf ml-3"
-                                                    style="font-size: 20px"></i>
+                                                View of cv <i class="far fa-file-pdf ml-3" style="font-size: 20px"></i>
                                             </button>
 
                                             <!-- Modal -->

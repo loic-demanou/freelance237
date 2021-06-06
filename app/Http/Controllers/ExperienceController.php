@@ -45,9 +45,11 @@ class ExperienceController extends Controller
             'state' => ['required'],
             'start_date' => ['required','date'],
             'end_date' => ['required','date'],
-            'description' => ['nullable'],
+            'description' => ['nullable', 'max:250'],
         ]);
         auth()->user()->experiences()->create($request->all());
+        flashy("New experience added !");
+
 
         return redirect()->route('experience.index');
 
@@ -96,6 +98,8 @@ class ExperienceController extends Controller
 
         ]);
         $experience->update($request->all());
+        flashy("Ewperience updated !");
+
         return redirect()->route('experience.index');
 
     }
@@ -109,6 +113,8 @@ class ExperienceController extends Controller
     public function destroy(Experience $experience)
     {
         $experience->delete();
+        flashy("Ewperience deleted !");
+
         return back();
     }
 }

@@ -18,7 +18,7 @@
                         <li>{{ $experience->city }}, {{ $experience->state }}</li>
                         @if ($experience->description)
                         <li>
-                            <strong> Description:</strong> {{ $experience->description }}
+                            <strong> Description:</strong> {!! $experience->description !!}
                         </li>
                         @endif
                     </ul>

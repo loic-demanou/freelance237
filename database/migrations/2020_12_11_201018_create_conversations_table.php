@@ -15,9 +15,9 @@ class CreateConversationsTable extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('from')->constrained('users');
-            $table->foreignId('to')->constrained('users');
-            $table->foreignId('job_id')->onDelete('cascade');
+            $table->foreignId('from')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('to')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('job_id')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

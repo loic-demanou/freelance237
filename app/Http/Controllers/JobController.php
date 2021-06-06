@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\Question;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -11,6 +12,12 @@ use MercurySeries\Flashy\Flashy;
 
 class JobController extends Controller
 {
+
+    // public function dash()
+    // {
+    //     return view('Admin.dashboard');
+    // }
+
     public function dashboard()
     {
         return view('dashboard');
@@ -48,9 +55,10 @@ class JobController extends Controller
     {
         request()->validate([
             'title' => ['required', 'string','min:5' ,'max:50'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1000'],
             'status' => ['required'],
             'price' => ['required', 'integer'],
+            'question_title' => ['nullable'],
             // 'attachment' => ['required', 'file']
         ]);
         // $pdf=request('attachment')->store('pdf', 'public');
@@ -63,6 +71,22 @@ class JobController extends Controller
             'price'=> request('price'),
             'user_id'=> auth()->user()->id,
         ]);
+        foreach ($request->questionJobs as $jo) {
+
+            // $jquestions = Question::create([
+            //     'job_>id' => $jobs->id,
+            //     // 'question_title' => $request->questionJobs,
+            //     'question_title' => $request->questionJobs
+            // ]);
+            // dd($jobs->questions);
+            
+            dd($request->questionJobs);
+            $jobs->questions()->attach(['question_title' => 
+            $request->questionJobs]);
+            dd($jobs);
+        }
+
+
         Flashy::message('New mission created !');
         return redirect()->route('jobs.index', compact('jobs'));
     }
@@ -71,7 +95,7 @@ class JobController extends Controller
     {
         request()->validate([
             'title' => ['required', 'string','min:5' ,'max:50'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1000'],
             'status' => ['required'],
             'price' => ['required', 'integer'],
             // 'attachment' => ['required', 'file']
